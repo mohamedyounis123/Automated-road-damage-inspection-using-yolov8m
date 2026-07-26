@@ -91,15 +91,21 @@ manually at the end.
 ### d) `train_final` — important speed settings
 
 ```python
-model.train(
-    data=data_yaml, epochs=epochs, imgsz=imgsz,
-    batch=0.80,          # Auto GPU-memory fraction — avoids the "batch size 1" BatchNorm error
-    cache="ram",          # Loads images into memory; the biggest speedup per epoch
-    workers=8,
-    patience=20,           # Early stopping if performance plateaus
-    amp=True,
-    ...
-)
+ model.train(
+        data=data_yaml, 
+        epochs=epochs, 
+        imgsz=imgsz,
+        batch=8,                        
+        cache=False,                   
+        patience=PATIENCE_EARLY_STOP,   
+        amp=True, 
+        seed=42, 
+        plots=True,
+        project=project, 
+        name=model_name.replace(".pt", ""), 
+        exist_ok=True,
+        **DEFAULT_HYP,
+    )
 ```
 
 > ⚠️ **Common error**: a fixed `batch=16` can fail with
