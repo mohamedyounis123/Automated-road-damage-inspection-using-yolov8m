@@ -72,13 +72,15 @@ hyperparameters, not to be a full training run.
 
 ```python
 MODELS = ["yolov8s.pt"]
+IMG_SIZE = 768                     
+FINAL_EPOCHS = 100               
+PATIENCE_EARLY_STOP = 20       
+
+BASELINE_EPOCHS = 0               
+TUNE_ITERATIONS = 0                
+TUNE_EPOCHS = 0
 TUNE_IMG_SIZE = 640
-TUNE_ITERATIONS = 20
-TUNE_EPOCHS = 8
-IMG_SIZE = 640
-FINAL_EPOCHS = 60
-BASELINE_EPOCHS = 0
-IOU_SAMPLE = 100
+IOU_SAMPLE = 80
 ```
 
 The project requires **at least 3 YOLO models** for comparison — repeat
